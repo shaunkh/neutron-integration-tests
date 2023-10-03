@@ -425,6 +425,7 @@ describe('Neutron / Subdao', () => {
     });
 
     test('update members: success', async () => {
+      jest.setTimeout(120000);
       await wait.waitSeconds(20);
       const votingPowerBefore = await subdaoMember2.queryVotingPower();
       expect(votingPowerBefore.power).toEqual('0');
