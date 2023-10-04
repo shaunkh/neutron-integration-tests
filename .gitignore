@@ -10,6 +10,7 @@ contracts/artifacts/
 .DS_Store
 *_action.json
 .vscode
+.yarn
 
 write-file-atomic*
 junit.xml
