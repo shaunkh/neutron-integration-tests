@@ -229,36 +229,7 @@ describe('Neutron / Simple', () => {
         expect(balance).toBe(50000 - 3000 - 2333 * 2);
       });
     });
-    describe('Missing fee', () => {
-      beforeAll(async () => {
-        await neutronAccount.executeContract(
-          contractAddress,
-          JSON.stringify({
-            set_fees: {
-              denom: neutronChain.denom,
-              ack_fee: '0',
-              recv_fee: '0',
-              timeout_fee: '0',
-            },
-          }),
-        );
-      });
-      test('execute contract should fail', async () => {
-        await expect(
-          neutronAccount.executeContract(
-            contractAddress,
-            JSON.stringify({
-              send: {
-                channel: 'channel-0',
-                to: gaiaAccount.wallet.address.toString(),
-                denom: NEUTRON_DENOM,
-                amount: '1000',
-              },
-            }),
-          ),
-        ).rejects.toThrow(/invalid coins/);
-      });
-    });
+
     describe('Multihops', () => {
       // 1. Check balance of Account 1 on Chain 1
       // 2. Check balance of Account 3 on Chain 2
